@@ -1,0 +1,84 @@
+Clients : 
+	- ID 
+	- Nom 
+	- Prenom 
+	- Addresse mail 
+	- Points de fidelit� 
+	- num de telephone 
+	- mot de passe
+	- ID panier
+	- Avis
+Agent : 
+	- ID 
+	- Nom 
+	- Prenom 
+	- CIN 
+	- Addresse mail 
+	- mot de passe 
+	- num de telephone
+Livreur : 
+	- ID 
+	- Nom 
+	- Prenom 
+	- CIN 
+	- Addresse mail 
+	- mot de passe 
+	- num de telephone
+
+Historique : 
+	- ID client 
+	- ID produit 
+	- Date d'achat 
+	- Prix 
+	 
+Carte fidelit� (arduino ) : 
+	- ID carte
+	- ID client 
+	- Date d'expiration 
+	- Valabilit�
+	- Points de fidelit� 
+	- type carte (classique (5%) , gold (10%) , vip (15%) ) 
+	- pay�
+
+Produits : 
+	- ID produit 
+	- Nom 
+	- Prix
+	- Points de fidelit�s gagn� par produit
+	- Remise
+	- Categorie 
+	- Sous-categorie
+	 
+Cadeaux : 
+	- ID participant  
+	- ID produit
+	- Temps restant
+Gagnants : 
+	- ID client 
+	- ID produit 
+	- Date
+
+	
+Panier : 
+	- ID panier
+	- ID produit 
+	- Quantite 
+	- Prix 
+	- Prix total
+	- pay� 
+	- livr�
+	- Automatique  
+
+(Feedback : 
+	- ID client
+	- Avis Client
+	- total likes 
+	- total dislikes 
+	- likes pourcentage) metier
+
+Livraison : 
+	- ID client
+	- ID panier 
+	- ID livreur
+	- livr� 
+	- Etat 
