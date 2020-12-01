@@ -108,34 +108,6 @@ void MainWindow::on_pushButton_clicked()
         }
 
 
-    /* if ((email=="agent")&&(pass=="agent"))
-    {
-        ui->stackedWidget->setCurrentIndex(0) ;
-        ui->lineEdit_email->setText("") ;
-        ui->lineEdit_password->setText("") ;
-        openLoggedPage() ;
-        close() ;
-
-
-
-    } else if ((email=="livreur")&&(pass=="livreur"))
-    {
-        ui->stackedWidget->setCurrentIndex(0) ;
-        ui->lineEdit_email->setText("") ;
-        ui->lineEdit_password->setText("") ;
-        openLivreur() ;
-        close() ;
-    } else if ((email=="client")&&(pass=="client"))
-    {
-        ui->stackedWidget->setCurrentIndex(0) ;
-        ui->lineEdit_email->setText("") ;
-        ui->lineEdit_password->setText("") ;
-        openClient() ;
-        close() ;
-    }else {
-        ui->label_introuvable->setText("Utilisateur Introuvable, Réssayer !") ;
-    } */
-
 }
 
 void MainWindow::on_navbar_signup_clicked()

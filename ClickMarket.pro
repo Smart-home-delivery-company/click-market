@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui printsupport charts
 QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -30,7 +30,8 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
-    produit.cpp
+    produit.cpp \
+    stats.cpp
 
 HEADERS += \
     admingui.h \
@@ -45,7 +46,8 @@ HEADERS += \
     livreurclass.h \
     login.h \
     mainwindow.h \
-    produit.h
+    produit.h \
+    stats.h
 
 FORMS += \
     admingui.ui \
@@ -55,7 +57,8 @@ FORMS += \
     facture.ui \
     livreur.ui \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    stats.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

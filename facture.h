@@ -16,6 +16,11 @@ public:
     explicit Facture(QWidget *parent = nullptr);
     ~Facture();
 
+private slots:
+
+
+    void on_boutton_imprimer_clicked();
+
 private:
     Ui::Facture *ui;
 };

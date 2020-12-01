@@ -1,6 +1,8 @@
 #include "facture.h"
 #include "ui_facture.h"
 #include <QPixmap>
+#include <QPrinter>
+#include <QPrintDialog>
 
 Facture::Facture(QWidget *parent) :
     QDialog(parent),
@@ -15,4 +17,15 @@ Facture::Facture(QWidget *parent) :
 Facture::~Facture()
 {
     delete ui;
+}
+
+
+
+void Facture::on_boutton_imprimer_clicked()
+{
+    QPrinter printer  ;
+    printer.setPrinterName("Impression Facture") ;
+    QPrintDialog dialog(&printer,this) ;
+    if (dialog.exec()== QDialog::Rejected) return ;
+    ui->textEdit->print(&printer) ;
 }

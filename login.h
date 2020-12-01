@@ -16,25 +16,6 @@ class login;
 }
 
 
-/*class produit: public QMainWindow{
-public :
-
-    int prix ;
-    QPushButton *bouttonpanier ;
-    QString image ;
-
-
-
-    produit()  ;
-    produit(int prix, QPushButton *boutton_panier , QString image ) ;
-
-    //void on_bouttonpanier_clicked() ;
-
-
-
-};
-*/
-
 
 class login : public QMainWindow
 {

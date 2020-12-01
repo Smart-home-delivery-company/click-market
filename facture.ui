@@ -105,6 +105,21 @@ font-weight : bold ;
       <string>Panier ID : </string>
      </property>
     </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>341</width>
+       <height>621</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <zorder>textEdit</zorder>
+    <zorder>label_5</zorder>
    </widget>
   </widget>
   <widget class="QLabel" name="facture_icon">
@@ -118,6 +133,19 @@ font-weight : bold ;
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="boutton_imprimer">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>20</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Imprimer</string>
    </property>
   </widget>
  </widget>

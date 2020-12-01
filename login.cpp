@@ -5,7 +5,7 @@
 #include <QFileDialog>
 #include "mainwindow.h"
 #include <QMap>
-#include "ui_facture.h"
+//#include "ui_facture.h"
 #include "clientclass.h"
 #include <QTableView>
 #include <QAbstractTableModel>
@@ -14,12 +14,6 @@ login::login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::login)
 {
-    /*
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("Source_Projet2A") ;
-    db.setUserName("abdelaziz") ;
-    db.setPassword("azertyyt123") ;
-    */
 
     ui->setupUi(this);
     QPixmap pix("C:/Users/Abdelaziz/Desktop/Qt_Projects/clickmarketlogo.png") ;
@@ -374,6 +368,7 @@ void login::on_pushButton_clicked()
     for (QList<produit> :: iterator it = tab_panier.begin() ; it !=tab_panier.end() ; ++it)
     {
         QLabel *label = new QLabel(&F);
+
         i++ ;
         label->setText("============  Article "+ QString::number(i) +"  ============\nID : "+ QString::number(it->id) + "\nNom Article : "+ it->nom_produit +"\nPrix : " + QString::number(it->prix) +"\n") ;
         label->move(100,x) ;

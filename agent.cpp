@@ -1,4 +1,4 @@
-#include "agent.h"
+ #include "agent.h"
 
 agent::agent()
 {
@@ -76,4 +76,108 @@ bool agent::modifer(int id, QString nom, QString prenom,int CIN, QString email, 
     QSqlQuery query ;
     query.prepare("update AGENT set ID='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' where ID='"+res_id+"'") ;
     return query.exec() ;
+}
+
+
+
+bool agent::charger_agents(QTableView *tableView)
+{
+    QSqlQueryModel * modal = new QSqlQueryModel() ;
+    QSqlQuery *query = new QSqlQuery();
+    query->prepare("select * from AGENT") ;
+    query->exec() ;
+    modal->setQuery(*query) ;
+    tableView->setModel(modal) ;
+    return true ;
+
+}
+
+void agent::table_click_agent(QString val, QLineEdit *id, QLineEdit *nom, QLineEdit *prenom, QLineEdit *cin, QLineEdit *email, QLineEdit *mdp, QLineEdit *tel  )
+{
+    QSqlQuery query ;
+    query.prepare("select * from AGENT where ID = '"+val+"'") ;
+    if (query.exec())
+    {
+        while (query.next())
+        {
+            id->setText(query.value(0).toString()) ;
+            nom->setText(query.value(1).toString()) ;
+            prenom->setText(query.value(2).toString()) ;
+            cin->setText(query.value(3).toString()) ;
+            email->setText(query.value(4).toString()) ;
+            mdp->setText(query.value(5).toString()) ;
+            tel->setText(query.value(6).toString()) ;
+
+        }
+
+    }
+}
+
+
+void agent::rechercher_agent(QString val , QComboBox *comboBox , QTableView *tableView)
+{
+    QSqlQueryModel * modal = new QSqlQueryModel() ;
+    if (comboBox->currentIndex()==1)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where ID = '"+val+"'" ) ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==2)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where PRENOM='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==3)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where EMAIL='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    }
+}
+
+
+void agent::trier_agents(QComboBox *comboBox , QTableView *tableView , QLabel *text_result)
+{
+    if (comboBox->currentIndex()==1)
+    {
+
+
+
+          QSqlQueryModel * modal = new QSqlQueryModel() ;
+          QSqlQuery *query = new QSqlQuery();
+           query->prepare("select * from AGENT ORDER BY ID") ;
+          query->exec() ;
+          modal->setQuery(*query) ;
+          tableView->setModel(modal) ;
+
+
+        text_result->setText("Succés tri par ID. ") ;
+    } else if (comboBox->currentIndex()==2)
+    {
+
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from AGENT ORDER BY NOM") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+
+        text_result->setText("Succés tri par nom.") ;
+    } else if (comboBox->currentIndex()==3)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from AGENT ORDER BY EMAIL") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par email.") ;
+    }
+
 }

@@ -135,19 +135,6 @@ font-weight : bold ;
       <string>Maison</string>
      </property>
     </widget>
-    <widget class="QLabel" name="navbar_livraison">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>90</y>
-       <width>241</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Livraison à domicile sur tout le pays</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="navbar_Accueil">
      <property name="geometry">
       <rect>
@@ -243,7 +230,7 @@ font-weight : bold ;
       </rect>
      </property>
      <property name="text">
-      <string>Panier</string>
+      <string>Statistiques</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -324,10 +311,15 @@ font-weight : bold ;
       <property name="styleSheet">
        <string notr="true">#tabWidget_2 {
 background : red ; 
+}
+
+boutton_chargerclients_3 {
+background : #7EC8F9 !important ;
+border: 2px solid black !important ; 
 }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -557,7 +549,7 @@ background : red ;
          <string/>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_email_18">
@@ -618,7 +610,7 @@ font-weight : bold ; </string>
          <rect>
           <x>670</x>
           <y>50</y>
-          <width>111</width>
+          <width>161</width>
           <height>31</height>
          </rect>
         </property>
@@ -663,12 +655,12 @@ font-weight : bold ; </string>
         </item>
         <item>
          <property name="text">
-          <string>CIN</string>
+          <string>Nom</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Points</string>
+          <string>Email</string>
          </property>
         </item>
        </widget>
@@ -685,261 +677,51 @@ font-weight : bold ; </string>
          <string>Trier</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="tab_8">
-       <attribute name="title">
-        <string>Ajouter Agent</string>
-       </attribute>
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QPushButton" name="boutton_ajouter">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>90</y>
-          <width>671</width>
-          <height>471</height>
+          <x>290</x>
+          <y>400</y>
+          <width>121</width>
+          <height>41</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel{
-font-size : 17px ; 
-}
-QRadioButton{
-font-size : 17px ; 
-}
-#groupBox_3{
-font-size : 19px ; 
-color : #377DAC ; 
-font-weight : bold ; 
-}</string>
+        <property name="text">
+         <string>Ajouter</string>
         </property>
-        <property name="title">
-         <string>Entrer les informations de l'Agent</string>
+       </widget>
+       <widget class="QComboBox" name="comboBox_4">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>21</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
         </property>
-        <widget class="QLabel" name="label_email_21">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>60</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <item>
          <property name="text">
-          <string>Nom :</string>
+          <string>- Critère -</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="nom_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>90</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_12">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>140</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string>Prenom : </string>
+          <string>ID</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="pren_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>170</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="signup_boutton_2">
-         <property name="geometry">
-          <rect>
-           <x>270</x>
-           <y>400</y>
-           <width>111</width>
-           <height>41</height>
-          </rect>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string>Ajouter</string>
+          <string>Pénom</string>
          </property>
-        </widget>
-        <widget class="QLabel" name="label_introuvable_3">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>230</y>
-           <width>241</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#label_introuvable {
-color:  red ; 
-}</string>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string/>
+          <string>Email</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="email_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>310</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="cin_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>240</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_13">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>280</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Email :</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_email_22">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>210</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>CIN : </string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="mdp2_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>170</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="mdp_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>90</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_14">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>140</y>
-           <width>211</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Re-entrer mot de passe :</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_email_23">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>60</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Mot de passse : </string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_15">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>210</y>
-           <width>211</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Numero telephone : </string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="tel_insc_2">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>240</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_probleme_2">
-         <property name="geometry">
-          <rect>
-           <x>70</x>
-           <y>360</y>
-           <width>281</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#label_probleme_2 {
-color : red ; 
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
+        </item>
        </widget>
       </widget>
       <widget class="QWidget" name="tab">
@@ -1138,27 +920,14 @@ color : red ;
         </item>
         <item>
          <property name="text">
-          <string>CIN</string>
+          <string>Nom</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Points</string>
+          <string>Email</string>
          </property>
         </item>
-       </widget>
-       <widget class="QPushButton" name="boutton_rechercher_3">
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>50</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Rechercher</string>
-        </property>
        </widget>
        <widget class="QLabel" name="label_email_28">
         <property name="geometry">
@@ -1196,7 +965,7 @@ color : red ;
          <string/>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QPushButton" name="boutton_chargerclients_3">
@@ -1208,8 +977,14 @@ color : red ;
           <height>51</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">boutton_chargerclients_3 {
+background : #7EC8F9 !important ;
+border: 2px solid black !important ; 
+}</string>
+        </property>
         <property name="text">
-         <string>Charger Agents</string>
+         <string>Charger Livreurs</string>
         </property>
        </widget>
        <widget class="QPushButton" name="boutton_supprimerclient_3">
@@ -1298,263 +1073,79 @@ font-weight : bold ; </string>
          <string/>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Ajouter Livreur</string>
-       </attribute>
-       <widget class="QGroupBox" name="groupBox_4">
+       <widget class="QPushButton" name="boutton_ajouter_2">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>90</y>
-          <width>671</width>
-          <height>471</height>
+          <x>290</x>
+          <y>400</y>
+          <width>121</width>
+          <height>41</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel{
-font-size : 17px ; 
-}
-QRadioButton{
-font-size : 17px ; 
-}
-#groupBox_4{
-font-size : 19px ; 
-color : #377DAC ; 
-font-weight : bold ; 
-}</string>
+        <property name="text">
+         <string>Ajouter</string>
         </property>
-        <property name="title">
-         <string>Entrer les informations du Livreur</string>
+       </widget>
+       <widget class="QPushButton" name="boutton_rechercher_4">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>49</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
         </property>
-        <widget class="QLabel" name="label_email_30">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>60</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_5">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>20</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <item>
          <property name="text">
-          <string>Nom :</string>
+          <string>- Critère -</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="nom_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>90</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_19">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>140</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string>Prenom : </string>
+          <string>ID</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="pren_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>170</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="signup_boutton_3">
-         <property name="geometry">
-          <rect>
-           <x>270</x>
-           <y>400</y>
-           <width>111</width>
-           <height>41</height>
-          </rect>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string>Ajouter</string>
+          <string>Pénom</string>
          </property>
-        </widget>
-        <widget class="QLabel" name="label_introuvable_4">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>230</y>
-           <width>241</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#label_introuvable {
-color:  red ; 
-}</string>
-         </property>
+        </item>
+        <item>
          <property name="text">
-          <string/>
+          <string>Email</string>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="email_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>310</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="cin_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>240</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_20">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>280</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Email :</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_email_31">
-         <property name="geometry">
-          <rect>
-           <x>60</x>
-           <y>210</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>CIN : </string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="mdp2_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>170</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="mdp_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>90</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_21">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>140</y>
-           <width>211</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Re-entrer mot de passe :</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_email_32">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>60</y>
-           <width>121</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Mot de passse : </string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_password_22">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>210</y>
-           <width>211</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Numero telephone : </string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="tel_insc_3">
-         <property name="geometry">
-          <rect>
-           <x>390</x>
-           <y>240</y>
-           <width>201</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Normal</enum>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_probleme_3">
-         <property name="geometry">
-          <rect>
-           <x>70</x>
-           <y>360</y>
-           <width>281</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">#label_probleme _3{
-color : red ; 
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
+        </item>
        </widget>
       </widget>
+     </widget>
+     <widget class="QPushButton" name="boutton_animerLogo">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Animer Logo</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="page_2"/>
