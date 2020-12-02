@@ -114,13 +114,17 @@ void login::on_navbar_Sant_3_clicked()
 
 void login::on_pushButton_16_clicked()
 {
+    QString emailAsc="" ;
     AssocierClient A ;
     A.exec() ;
     if (A.association_faite==true)
     {
         client_associe=true ;
         ui->stackedWidget_3->setCurrentIndex(1) ;
+        ui->email_ascText->setText(A.email_asc) ;
+
     }
+
 }
 
 
@@ -463,29 +467,7 @@ void login::on_supprimer_compte_associe_clicked()
 // ============== Ajouter compte client
 void login::on_signup_boutton_clicked()
 {
-    QString nom = ui->nom_insc->text() ;
-    QString prenom = ui->pren_insc->text() ;
-    QString email = ui->email_insc->text() ;
-    int CIN = ui->cin_insc->text().toInt() ;
-    int num_tel = ui->tel_insc->text().toInt() ;
 
-    QString mdp    ;
-    if ((ui->mdp_insc->text()==ui->mdp2_insc->text())&&(ui->mdp_insc->text()!=""))
-    {
-        mdp = ui->mdp_insc->text() ;
-    }
-    //int ui->tel_insc->text().toInt() ;
-    int id = 3 ;
-
-    clientclass C(id,nom,prenom,CIN,email,mdp,num_tel,0 ) ;
-    bool test  = C.ajouter() ;
-    if (test==true)
-    {
-        ui->label_probleme->setText("Client Ajouté avec succés !") ;
-    } else
-    {
-        ui->label_probleme->setText("Erreur d'inscription ! Réessayez.") ;
-    }
 
 }
 
@@ -498,12 +480,15 @@ void login::on_navbar_Sant_4_clicked()
 
 void login::on_boutton_chargerclients_clicked()
 {
-    QSqlQueryModel * modal = new QSqlQueryModel() ;
-    QSqlQuery *query = new QSqlQuery();
-    query->prepare("select * from CLIENT") ;
-    query->exec() ;
-    modal->setQuery(*query) ;
-    ui->tableView->setModel(modal) ;
+    clientclass C ;
+    bool test = C.charger_clients(ui->tableView) ;
+    if (test==true)
+    {
+        ui->text_result->setText("Liste des clients chargée avec succés !") ;
+    } else
+    {
+        ui->text_result->setText("Probléme lors du chargement.") ;
+    }
 
 
 }
@@ -511,23 +496,8 @@ void login::on_boutton_chargerclients_clicked()
 void login::on_tableView_activated(const QModelIndex &index)
 {
     QString val = ui->tableView->model()->data(index).toString() ;
-    QSqlQuery query ;
-    query.prepare("select * from CLIENT where ID = '"+val+"'") ;
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            ui->id->setText(query.value(0).toString()) ;
-            ui->nom->setText(query.value(1).toString()) ;
-            ui->prenom->setText(query.value(2).toString()) ;
-            ui->cin->setText(query.value(3).toString()) ;
-            ui->email->setText(query.value(4).toString()) ;
-            ui->mdp->setText(query.value(5).toString()) ;
-            ui->tel->setText(query.value(6).toString()) ;
-            ui->points->setText(query.value(7).toString()) ;
-        }
-
-    }
+    clientclass C ;
+    C.table_click_client(val,ui->id,ui->nom,ui->prenom, ui->cin, ui->email,ui->mdp, ui->tel, ui->points);
 }
 
 void login::on_boutton_supprimerclient_clicked()
@@ -582,12 +552,8 @@ void login::on_boutton_modifierclient_clicked()
 void login::on_boutton_rechercher_clicked()
 {
     QString val = ui->input_recherche->text();
-    QSqlQueryModel * modal = new QSqlQueryModel() ;
-    QSqlQuery *query = new QSqlQuery();
-    query->prepare("select * from CLIENT where ID = '"+val+"' or NOM='"+val+"' or PRENOM='"+val+"' or EMAIL='"+val+"' or CIN='"+val+"' or TEL='"+val+"'") ;
-    query->exec() ;
-    modal->setQuery(*query) ;
-    ui->tableView->setModel(modal) ;
+    clientclass C ;
+    C.rechercher_client(val,ui->comboBox_2,ui->tableView) ;
 }
 
 
@@ -595,39 +561,31 @@ void login::on_boutton_rechercher_clicked()
 
 void login::on_boutton_trier_clicked()
 {
-    if (ui->comboBox->currentIndex()==1)
+    clientclass C ;
+    C.trier_client(ui->comboBox,ui->tableView,ui->text_result) ;
+}
+
+void login::on_boutton_ajouter_clicked()
+{
+    QString id = ui->id->text() ;
+    QString nom = ui->nom->text() ;
+    QString prenom = ui->prenom->text() ;
+    QString cin = ui->cin->text() ;
+    QString email = ui->email->text() ;
+    QString mdp = ui->mdp->text() ;
+    QString tel = ui->tel->text() ;
+    QString points = ui->points->text() ;
+
+
+    clientclass D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt(),points.toInt()) ;
+    bool test = D.ajouter() ;
+
+
+    if (test==true)
     {
-
-
-
-          QSqlQueryModel * modal = new QSqlQueryModel() ;
-          QSqlQuery *query = new QSqlQuery();
-           query->prepare("select * from CLIENT ORDER BY ID") ;
-          query->exec() ;
-          modal->setQuery(*query) ;
-          ui->tableView->setModel(modal) ;
-
-
-        ui->text_result->setText("111111111") ;
-    } else if (ui->comboBox->currentIndex()==2)
+        ui->text_result->setText("Client ajouté avec succés !") ;
+    } else
     {
-
-        QSqlQueryModel * modal = new QSqlQueryModel() ;
-        QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from CLIENT ORDER BY CIN") ;
-        query->exec() ;
-        modal->setQuery(*query) ;
-        ui->tableView->setModel(modal) ;
-
-        ui->text_result->setText("22222222") ;
-    } else if (ui->comboBox->currentIndex()==3)
-    {
-        QSqlQueryModel * modal = new QSqlQueryModel() ;
-        QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from CLIENT ORDER BY POINTS") ;
-        query->exec() ;
-        modal->setQuery(*query) ;
-        ui->tableView->setModel(modal) ;
-        ui->text_result->setText("33333") ;
+        ui->text_result->setText("Probléme lors de l'ajout du client.") ;
     }
 }

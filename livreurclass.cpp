@@ -109,6 +109,27 @@ void livreurclass::rechercher_livreur(QString val,QComboBox *comboBox,QTableView
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==4)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from ALIVREUR where CIN='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==5)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from ALIVREUR where NOM='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==6)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from ALIVREUR where TEL='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
     }
 }
 
@@ -148,5 +169,32 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
         text_result->setText("Succés tri par email.") ;
+    } else if (comboBox->currentIndex()==4)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from ALIVREUR ORDER BY CIN") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par CIN.") ;
+    } else if (comboBox->currentIndex()==5)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from ALIVREUR ORDER BY PRENOM") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par nom.") ;
+    } else if (comboBox->currentIndex()==6)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from ALIVREUR ORDER BY TEL") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par téléphone.") ;
     }
 }

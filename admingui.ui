@@ -29,13 +29,13 @@ font-size : 12px ;
 }
 
 QPushButton {
-background : #FFFFFF ; 
+background : #6691C1 ; 
 box-shadow:  0  0 30px white ;
 transition: all 0.4s ;
 }
 
 QPushButton:hover {
-background : #45A4CD ; 
+background : #C7DBF3 ; 
 }
 
 #navbar_login {
@@ -76,6 +76,11 @@ font-weight : bold ;
       <width>1281</width>
       <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+background : white ; 
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -316,10 +321,28 @@ background : red ;
 boutton_chargerclients_3 {
 background : #7EC8F9 !important ;
 border: 2px solid black !important ; 
+}
+
+#detail_agent {
+color : blue ; 
+}
+
+
+#detail_livreur {
+color : orange ; 
+}
+
+QLabel {
+font-size : 15px ; 
+font-weight : bold ;
+}
+
+#tabWidget_2 {
+background : green ;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -358,7 +381,7 @@ border: 2px solid black !important ;
          </rect>
         </property>
         <property name="text">
-         <string>Prenom : </string>
+         <string>Prénom : </string>
         </property>
        </widget>
        <widget class="QLabel" name="label_email_13">
@@ -392,12 +415,12 @@ border: 2px solid black !important ;
          <rect>
           <x>260</x>
           <y>170</y>
-          <width>131</width>
+          <width>171</width>
           <height>31</height>
          </rect>
         </property>
         <property name="text">
-         <string>Numero telephone : </string>
+         <string>Numero téléphone : </string>
         </property>
        </widget>
        <widget class="QLineEdit" name="nom_2">
@@ -486,7 +509,7 @@ border: 2px solid black !important ;
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="label_email_16">
+       <widget class="QLabel" name="detail_agent">
         <property name="geometry">
          <rect>
           <x>40</x>
@@ -663,6 +686,21 @@ font-weight : bold ; </string>
           <string>Email</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>CIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Prénom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Téléphone</string>
+         </property>
+        </item>
        </widget>
        <widget class="QPushButton" name="boutton_trier_2">
         <property name="geometry">
@@ -722,6 +760,21 @@ font-weight : bold ; </string>
           <string>Email</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>CIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Téléphone</string>
+         </property>
+        </item>
        </widget>
       </widget>
       <widget class="QWidget" name="tab">
@@ -756,12 +809,12 @@ font-weight : bold ; </string>
          <rect>
           <x>260</x>
           <y>170</y>
-          <width>131</width>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
         <property name="text">
-         <string>Numero telephone : </string>
+         <string>Numero téléphone : </string>
         </property>
        </widget>
        <widget class="QLabel" name="label_email_17">
@@ -872,7 +925,7 @@ font-weight : bold ; </string>
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="label_email_27">
+       <widget class="QLabel" name="detail_livreur">
         <property name="geometry">
          <rect>
           <x>40</x>
@@ -926,6 +979,21 @@ font-weight : bold ; </string>
         <item>
          <property name="text">
           <string>Email</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Prénom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Téléphone</string>
          </property>
         </item>
        </widget>
@@ -1043,7 +1111,7 @@ border: 2px solid black !important ;
          </rect>
         </property>
         <property name="text">
-         <string>Prenom : </string>
+         <string>Prénom : </string>
         </property>
        </widget>
        <widget class="QLineEdit" name="input_recherche_3">
@@ -1129,6 +1197,21 @@ font-weight : bold ; </string>
         <item>
          <property name="text">
           <string>Email</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CIN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Téléphone</string>
          </property>
         </item>
        </widget>

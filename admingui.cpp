@@ -17,6 +17,9 @@
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 
+#include <QVBoxLayout>
+
+#include <QMediaPlayer>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -35,7 +38,19 @@ adminGUI::adminGUI(QWidget *parent) :
     Animation->setStartValue(ui->logopic1->geometry()) ;
     Animation->setEndValue(QRect(10,-55,300,300)) ;
     Animation->start() ;
+
+    QMediaPlayer *music = new QMediaPlayer() ;
+    music->setMedia(QUrl("C:/Users/Abdelaziz/Desktop/Qt_Projects/ClickMarket/bgmusic.mp3")) ;
+    music->play() ;
+
+
+    clicksound = new QMediaPlayer() ;
+    clicksound->setMedia(QUrl("C:/Users/Abdelaziz/Desktop/Qt_Projects/ClickMarket/ajoutsound.mp3")) ;
 }
+
+
+
+
 
 adminGUI::~adminGUI()
 {
@@ -76,17 +91,26 @@ void adminGUI::on_boutton_supprimerclient_2_clicked()
     QString mdp = ui->mdp_2->text() ;
     QString tel = ui->tel_2->text() ;
 
-    agent C ;
-    bool test = C.supprimer(id.toInt()) ;
-
-
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_2->setText("Client supprimé.") ;
+        ui->text_result_2->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_2->setText("Probléme lors de la suppression du client.") ;
+
+        agent C ;
+        bool test = C.supprimer(id.toInt()) ;
+
+
+        if (test==true)
+        {
+            clicksound->play() ;
+            ui->text_result_2->setText("Client supprimé.") ;
+        } else
+        {
+            ui->text_result_2->setText("Probléme lors de la suppression du client.") ;
+        }
     }
+
 }
 
 void adminGUI::on_boutton_modifierclient_2_clicked()
@@ -99,15 +123,23 @@ void adminGUI::on_boutton_modifierclient_2_clicked()
     QString mdp = ui->mdp_2->text() ;
     QString tel = ui->tel_2->text() ;
 
-    agent D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
-    bool test = D.modifer(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_2->setText("Client modifié avec succés !") ;
+        ui->text_result_2->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_2->setText("Probléme lors de la modification.") ;
+        agent D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
+        bool test = D.modifer(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
+        if (test==true)
+        {
+            clicksound->play() ;
+            ui->text_result_2->setText("Client modifié avec succés !") ;
+        } else
+        {
+            ui->text_result_2->setText("Probléme lors de la modification.") ;
+        }
     }
+
 }
 
 void adminGUI::on_boutton_rechercher_2_clicked()
@@ -127,17 +159,28 @@ void adminGUI::on_boutton_ajouter_clicked()
     QString email = ui->email_2->text() ;
     QString mdp = ui->mdp_2->text() ;
     int tel = ui->tel_2->text().toInt() ;
-    agent C(id,nom,prenom,cin,email,mdp,tel) ;
-    bool test = C.ajouter() ;
 
 
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_2->setText("Agent ajouté.") ;
+        ui->text_result_2->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_2->setText("Probléme lors de l'ajout de l'agent.") ;
+        agent C(id,nom,prenom,cin,email,mdp,tel) ;
+        bool test = C.ajouter() ;
+        if (test==true)
+        {
+            clicksound->play() ;
+
+
+            ui->text_result_2->setText("Agent ajouté.") ;
+        } else
+        {
+            ui->text_result_2->setText("Probléme lors de l'ajout de l'agent.") ;
+        }
     }
+
+
 }
 
 
@@ -206,15 +249,23 @@ void adminGUI::on_boutton_modifierclient_3_clicked()
     QString mdp = ui->mdp_3->text() ;
     QString tel = ui->tel_3->text() ;
 
-    livreurclass D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
-    bool test = D.modifer(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_3->setText("Livreur modifié avec succés !") ;
+        ui->text_result_3->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_3->setText("Probléme lors de la modification.") ;
+        livreurclass D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
+        bool test = D.modifer(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt()) ;
+        if (test==true)
+        {
+            clicksound->play() ;
+            ui->text_result_3->setText("Livreur modifié avec succés !") ;
+        } else
+        {
+            ui->text_result_3->setText("Probléme lors de la modification.") ;
+        }
     }
+
 
 
 }
@@ -239,17 +290,26 @@ void adminGUI::on_boutton_supprimerclient_3_clicked()
     QString email = ui->email_3->text() ;
     QString mdp = ui->mdp_3->text() ;
     QString tel = ui->tel_3->text() ;
-    livreurclass C ;
-    bool test = C.supprimer(id.toInt()) ;
 
-
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_3->setText("Livreur supprimé.") ;
+        ui->text_result_3->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_3->setText("Probléme lors de la suppression de l'agent.") ;
+        livreurclass C ;
+        bool test = C.supprimer(id.toInt()) ;
+
+
+        if (test==true)
+        {
+            clicksound->play() ;
+            ui->text_result_3->setText("Livreur supprimé.") ;
+        } else
+        {
+            ui->text_result_3->setText("Probléme lors de la suppression de l'agent.") ;
+        }
     }
+
 }
 
 
@@ -263,14 +323,23 @@ void adminGUI::on_boutton_ajouter_2_clicked()
     QString email = ui->email_3->text() ;
     QString mdp = ui->mdp_3->text() ;
     int tel = ui->tel_3->text().toInt() ;
-    livreurclass C(id,nom,prenom,cin,email,mdp,tel) ;
-    bool test  = C.ajouter() ;
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
     {
-        ui->text_result_3->setText("Livreur Ajouté avec succés !") ;
+        ui->text_result_3->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result_3->setText("Probléme lors de l'ajout du livreur.") ;
+        livreurclass C(id,nom,prenom,cin,email,mdp,tel) ;
+        bool test  = C.ajouter() ;
+        if (test==true)
+        {
+            clicksound->play() ;
+
+
+            ui->text_result_3->setText("Livreur ajouté.") ;
+        } else
+        {
+            ui->text_result_3->setText("Probléme lors de l'ajout du livreur.") ;
+        }
     }
 }
 
@@ -301,49 +370,78 @@ void adminGUI::openStats()
 }
 void adminGUI::on_navbar_Sant_3_clicked()
 {
-    openStats() ;
-    stats *S ;
 
-    QBarSet *set0 = new QBarSet("Electronique") ;
-    QBarSet *set1 = new QBarSet("Maison") ;
-    QBarSet *set2 = new QBarSet("Fashion") ;
-    QBarSet *set3 = new QBarSet("Electronique") ;
+        QWidget *w = new QWidget();
+        w->setObjectName("Stats");
+       QVBoxLayout *layout = new QVBoxLayout;
 
-    *set0 << 10 ;
-    *set1 << 12 ;
-    *set2 << 4 ;
-    *set3 << 8 ;
+       QBarSet *set0 = new QBarSet("Electroniques");
+       QBarSet *set1 = new QBarSet("Maison");
+       QBarSet *set2 = new QBarSet("Fashion");
+       QBarSet *set3 = new QBarSet("Sante et beaute");
+        QBarSeries *series = new QBarSeries();
 
-    QBarSeries *series = new QBarSeries() ;
-    series->append(set0) ;
-    series->append(set1) ;
-    series->append(set2) ;
-    series->append(set3) ;
+        //--------------------------
+      int e=2400 , m=3600 , f=6200 , s=1240 , max=0 ;
+      if ((e>m)&&(e>f)&&(e>s))
+      {
+          max = e ;
+      } else if ((m>f)&&(m>s))
+      {
+          max = m ;
+      } else if (f>s)
+      {
+          max = f ;
+      } else
+      {
+          max =s ;
+      }
 
-    QChart *chart = new QChart() ;
-    chart->addSeries(series) ;
-    chart->setTitle("Statistiques des commandes") ;
-    chart->setAnimationOptions(QChart::AllAnimations) ;
-    QStringList categories ;
-    categories << "Ce mois" ;
-    QBarCategoryAxis *axis = new QBarCategoryAxis() ;
-    axis->append(categories) ;
-    chart->createDefaultAxes() ;
-    chart->setAxisX(axis,series) ;
-    chart->legend()->setVisible(true) ;
-    chart->legend()->setAlignment(Qt::AlignBottom) ;
+      *set0 << e ;
+      series->append(set0);
 
-    QChartView *chartView = new QChartView(chart) ;
-    chartView->setRenderHint(QPainter::Antialiasing) ;
-    QPalette pal =  qApp->palette() ;
-    pal.setColor(QPalette::Window, QRgb(0xffffff)) ;
-    pal.setColor(QPalette::WindowText, QRgb(0x404040)) ;
-    qApp->setPalette(pal) ;
+      *set1 << m ;
+      series->append(set1);
+
+      *set2 << f ;
+      series->append(set2);
+
+      *set3 << s ;
+      series->append(set3);
+      //***************************
 
 
-    S->setCentralWidget(chartView) ;
-    S->resize(420,300) ;
-    S->show() ;
+       QChart *chart = new QChart();
+           chart->addSeries(series);
+           chart->setTitle("Statisqtues des revenues en DT");
+           chart->setAnimationOptions(QChart::SeriesAnimations);
+
+           QStringList categories;
+               categories << "Catégories" ;
+               QBarCategoryAxis *axisX = new QBarCategoryAxis();
+               axisX->append(categories);
+               chart->addAxis(axisX, Qt::AlignBottom);
+               series->attachAxis(axisX);
+               QValueAxis *axisY = new QValueAxis();
+                   axisY->setRange(0,max);
+                   chart->addAxis(axisY, Qt::AlignLeft);
+                   series->attachAxis(axisY);
+                   chart->legend()->setVisible(true);
+                       chart->legend()->setAlignment(Qt::AlignBottom);
+
+
+
+          QChartView *view = new QChartView(chart);
+          view->setRenderHint(QPainter::Antialiasing);
+           layout->addWidget(view);
+           w->setLayout(layout);
+           w->resize(620,700);
+
+        w->show();
+
+
+
+
 
 }
 
@@ -354,4 +452,22 @@ void adminGUI::on_boutton_animerLogo_clicked()
     Animation->setStartValue(ui->logopic1->geometry()) ;
     Animation->setEndValue(QRect(10,-100,300,300)) ;
     Animation->start() ;
+}
+
+
+
+
+void adminGUI::on_navbar_Accueil_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1) ;
+}
+
+void adminGUI::on_navbar_Sant_4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0) ;
+}
+
+void adminGUI::on_navbar_Elect_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1) ;
 }

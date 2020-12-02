@@ -9,6 +9,7 @@
 #include "agent.h"
 #include "clientclass.h"
 #include "livreurclass.h"
+#include "admin.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -81,8 +82,10 @@ void MainWindow::on_pushButton_clicked()
     QString email = ui->lineEdit_email->text() ;
     QString pass = ui->lineEdit_password->text() ;
 
+    admin C(email,pass) ;
     agent A(0,"","",0,email,pass,0 ) ;
     bool test = A.test_login() ;
+    bool test2 = C.admin_testlogin() ;
     if (test==true)
     {
         ui->stackedWidget->setCurrentIndex(0) ;
@@ -95,7 +98,7 @@ void MainWindow::on_pushButton_clicked()
         ui->label_introuvable->setText("Utilisateur Introuvable, Réssayer !") ;
     }
 
-    if ((email=="admin")&&(pass=="admin"))
+    if (test2==true)
         {
             ui->stackedWidget->setCurrentIndex(0) ;
             ui->lineEdit_email->setText("") ;

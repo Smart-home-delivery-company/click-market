@@ -138,6 +138,27 @@ void agent::rechercher_agent(QString val , QComboBox *comboBox , QTableView *tab
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==4)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where CIN='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==5)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where NOM='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+    } else if (comboBox->currentIndex()==6)
+    {
+        QSqlQuery *query = new QSqlQuery();
+        query->prepare("select * from AGENT where TEL='"+val+"'") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
     }
 }
 
@@ -178,6 +199,33 @@ void agent::trier_agents(QComboBox *comboBox , QTableView *tableView , QLabel *t
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
         text_result->setText("Succés tri par email.") ;
+    } else if (comboBox->currentIndex()==4)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from AGENT ORDER BY CIN") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par CIN.") ;
+    } else if (comboBox->currentIndex()==5)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from AGENT ORDER BY PRENOM") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par Prénom.") ;
+    } else if (comboBox->currentIndex()==6)
+    {
+        QSqlQueryModel * modal = new QSqlQueryModel() ;
+        QSqlQuery *query = new QSqlQuery();
+         query->prepare("select * from AGENT ORDER BY TEL") ;
+        query->exec() ;
+        modal->setQuery(*query) ;
+        tableView->setModel(modal) ;
+        text_result->setText("Succés tri par Numéro de téléphone.") ;
     }
 
 }

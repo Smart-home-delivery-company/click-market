@@ -119,6 +119,10 @@ private slots:
 
     void on_boutton_trier_clicked();
 
+   //void on_boutton_ajouter_clicked();
+
+    void on_boutton_ajouter_clicked();
+
 private:
     Ui::login *ui;
 

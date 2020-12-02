@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "stats.h"
 #include <QPropertyAnimation>
+#include <QMediaPlayer>
 
 namespace Ui {
 class adminGUI;
@@ -14,6 +15,7 @@ class adminGUI : public QMainWindow
     Q_OBJECT
 
 public:
+
     void openStats();
     explicit adminGUI(QWidget *parent = nullptr);
     ~adminGUI();
@@ -57,10 +59,17 @@ private slots:
 
     void on_boutton_animerLogo_clicked();
 
+    void on_navbar_Accueil_clicked();
+
+    void on_navbar_Sant_4_clicked();
+
+    void on_navbar_Elect_clicked();
+
 private:
     Ui::adminGUI *ui;
     stats *chart ;
     QPropertyAnimation *Animation ;
+    QMediaPlayer *clicksound ;
 };
 
 #endif // ADMINGUI_H
