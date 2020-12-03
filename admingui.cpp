@@ -152,6 +152,28 @@ void adminGUI::on_boutton_rechercher_2_clicked()
 
 void adminGUI::on_boutton_ajouter_clicked()
 {
+   /* bool menu::verifnom()
+    {
+
+
+        if (text.contains(QRegExp("[^a-zA-Z ]") ) || ui->nomemploye->text().isEmpty())
+        {
+            ui->nomemploye->clear();
+
+            ui->label_NomControl->setPixmap(falseim);
+                ui->nomemploye->setPlaceholderText("contient que des caracteres") ;
+            return false;
+        }
+        else
+        {
+            ui->label_NomControl->setPixmap(trueim);
+            return true;
+        }
+
+    } */
+
+
+
     int id = ui->id_2->text().toInt() ;
     QString nom = ui->nom_2->text() ;
     QString prenom = ui->prenom_2->text() ;
@@ -161,7 +183,7 @@ void adminGUI::on_boutton_ajouter_clicked()
     int tel = ui->tel_2->text().toInt() ;
 
 
-    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL)||(mdp.size()<6) || (nom.contains(QRegExp("[^a-zA-Z ]")))||(prenom.contains(QRegExp("[^a-zA-Z ]"))))
     {
         ui->text_result_2->setText("Veuillez vérifier les détails.") ;
     } else
@@ -323,7 +345,7 @@ void adminGUI::on_boutton_ajouter_2_clicked()
     QString email = ui->email_3->text() ;
     QString mdp = ui->mdp_3->text() ;
     int tel = ui->tel_3->text().toInt() ;
-    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL))
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL)||(mdp.size()<6)||(nom.contains(QRegExp("[^a-zA-Z ]")))||(prenom.contains(QRegExp("[^a-zA-Z ]"))))
     {
         ui->text_result_3->setText("Veuillez vérifier les détails.") ;
     } else

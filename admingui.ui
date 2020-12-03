@@ -212,25 +212,12 @@ font-weight : bold ;
       <string>ADMIN</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="navbar_Sant_2">
+    <widget class="QPushButton" name="navbar_Sant_3">
      <property name="geometry">
       <rect>
        <x>1070</x>
        <y>70</y>
-       <width>91</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Profil</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="navbar_Sant_3">
-     <property name="geometry">
-      <rect>
-       <x>1170</x>
-       <y>70</y>
-       <width>91</width>
+       <width>191</width>
        <height>31</height>
       </rect>
      </property>

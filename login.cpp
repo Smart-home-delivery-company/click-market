@@ -576,16 +576,23 @@ void login::on_boutton_ajouter_clicked()
     QString tel = ui->tel->text() ;
     QString points = ui->points->text() ;
 
-
-    clientclass D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt(),points.toInt()) ;
-    bool test = D.ajouter() ;
-
-
-    if (test==true)
+    if ((id==NULL)||(nom=="")||(prenom=="")||(cin==NULL)||(email=="")||(mdp=="")||(tel==NULL)||(mdp.size()<6)||(nom.contains(QRegExp("[^a-zA-Z ]")))||(prenom.contains(QRegExp("[^a-zA-Z ]"))))
     {
-        ui->text_result->setText("Client ajouté avec succés !") ;
+        ui->text_result->setText("Veuillez vérifier les détails.") ;
     } else
     {
-        ui->text_result->setText("Probléme lors de l'ajout du client.") ;
+        clientclass D(id.toInt(),nom,prenom,cin.toInt(),email,mdp,tel.toInt(),points.toInt()) ;
+        bool test = D.ajouter() ;
+
+
+        if (test==true)
+        {
+            ui->text_result->setText("Client ajouté avec succés !") ;
+        } else
+        {
+            ui->text_result->setText("Probléme lors de l'ajout du client.") ;
+        }
     }
+
+
 }
