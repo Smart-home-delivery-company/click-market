@@ -120,7 +120,7 @@ color: black   ;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page_electronique">
      <widget class="QScrollArea" name="scrollArea">
@@ -630,19 +630,6 @@ background : #FFDDAF ;
          <string>Passer à la Commande</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_18">
-        <property name="geometry">
-         <rect>
-          <x>1020</x>
-          <y>700</y>
-          <width>181</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Trier Produits par ID</string>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_tri">
         <property name="geometry">
          <rect>
@@ -689,7 +676,7 @@ background : #FFDDAF ;
          </rect>
         </property>
         <property name="text">
-         <string>stat</string>
+         <string>Statistiques</string>
         </property>
        </widget>
       </widget>
@@ -1203,7 +1190,7 @@ font-size : 18px ;
            </rect>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page">
            <widget class="QScrollArea" name="scrollArea_10">
@@ -1604,7 +1591,7 @@ color : orange ;
                <rect>
                 <x>50</x>
                 <y>290</y>
-                <width>131</width>
+                <width>151</width>
                 <height>21</height>
                </rect>
               </property>
@@ -1669,19 +1656,6 @@ color : orange ;
           </widget>
          </widget>
         </widget>
-       </widget>
-       <widget class="QPushButton" name="emailing">
-        <property name="geometry">
-         <rect>
-          <x>1140</x>
-          <y>20</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>E-mailing</string>
-        </property>
        </widget>
       </widget>
      </widget>
@@ -2171,7 +2145,7 @@ background : #C7DBF3 ;
          <rect>
           <x>260</x>
           <y>170</y>
-          <width>131</width>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
@@ -2722,8 +2696,8 @@ font-weight : bold ;
     <widget class="QPushButton" name="navbar_Sant_2">
      <property name="geometry">
       <rect>
-       <x>1070</x>
-       <y>70</y>
+       <x>10</x>
+       <y>120</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -2821,6 +2795,19 @@ font-weight : bold ;
      </property>
      <property name="text">
       <string>Gestion Des Clients</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="navbar_Sant_5">
+     <property name="geometry">
+      <rect>
+       <x>1070</x>
+       <y>70</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Statistiques</string>
      </property>
     </widget>
    </widget>

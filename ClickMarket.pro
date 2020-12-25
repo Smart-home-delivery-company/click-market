@@ -2,7 +2,7 @@ QT       += core gui printsupport charts \
             multimedia
 QT += sql
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport
 
 CONFIG += c++11
 
@@ -22,6 +22,7 @@ SOURCES += \
     admingui.cpp \
     agent.cpp \
     ajouterproduit.cpp \
+    arduino.cpp \
     associerclient.cpp \
     client.cpp \
     clientclass.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     admingui.h \
     agent.h \
     ajouterproduit.h \
+    arduino.h \
     associerclient.h \
     client.h \
     clientclass.h \

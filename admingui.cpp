@@ -39,6 +39,8 @@ adminGUI::adminGUI(QWidget *parent) :
     Animation->setEndValue(QRect(10,-55,300,300)) ;
     Animation->start() ;
 
+
+
     QMediaPlayer *music = new QMediaPlayer() ;
     music->setMedia(QUrl("C:/Users/Abdelaziz/Desktop/Qt_Projects/ClickMarket/bgmusic.mp3")) ;
     music->play() ;
@@ -404,7 +406,43 @@ void adminGUI::on_navbar_Sant_3_clicked()
         QBarSeries *series = new QBarSeries();
 
         //--------------------------
-      int e=2400 , m=3600 , f=6200 , s=1240 , max=0 ;
+        QSqlQuery query,query1,query2,query3 ;
+            query.prepare("SELECT PRIX from PRODUIT where CATEGORIE = 'ELECTRONIQUE' ") ;
+           query.exec() ;
+           int e=0 ;
+           while (query.next()) {
+               QString e1 = query.value(0).toString() ;
+               e += e1.toInt() ;
+               }
+
+           query1.prepare("SELECT PRIX from PRODUIT where CATEGORIE = 'MAISON' ") ;
+          query1.exec() ;
+          int m=0 ;
+          while (query1.next()) {
+              QString e1 = query1.value(0).toString() ;
+              m += e1.toInt() ;
+              }
+
+          query2.prepare("SELECT PRIX from PRODUIT where CATEGORIE = 'FASHION' ") ;
+         query2.exec() ;
+         int f=0 ;
+         while (query2.next()) {
+             QString e1 = query2.value(0).toString() ;
+             f += e1.toInt() ;
+             }
+
+         query3.prepare("SELECT PRIX from PRODUIT where CATEGORIE = 'SANTE' ") ;
+        query3.exec() ;
+        int s=0 ;
+        while (query3.next()) {
+            QString e1 = query3.value(0).toString() ;
+            s += e1.toInt() ;
+            }
+
+
+
+
+      int   max=0 ;
       if ((e>m)&&(e>f)&&(e>s))
       {
           max = e ;

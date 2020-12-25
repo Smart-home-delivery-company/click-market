@@ -10,6 +10,23 @@
 #include <QTableView>
 #include <QAbstractTableModel>
 
+
+#include <QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QHorizontalStackedBarSeries>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QCategoryAxis>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+
+#include <QVBoxLayout>
+
+
 login::login(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::login)
@@ -594,5 +611,10 @@ void login::on_boutton_ajouter_clicked()
         }
     }
 
+
+}
+
+void login::on_navbar_Sant_5_clicked()
+{
 
 }

@@ -28,7 +28,7 @@ bool agent::ajouter()
     QString res_id = QString::number(get_id()) ;
     QString res_CIN = QString::number(get_cin()) ;
     QString res_numtel = QString::number(get_numtel()) ;
-    query.prepare("INSERT INTO AGENT(ID,NOM,PRENOM,CIN,EMAIL,MDP,TEL)"
+    query.prepare("INSERT INTO AGENT(ID_AGENT,NOM,PRENOM,CIN,EMAIL,MDP,TEL)"
                   "VALUES(:id_agent, :nom, :prenom, :CIN, :email, :mdp, :num_tel)") ;
     query.bindValue(":id_agent", res_id) ;
     query.bindValue(":nom", nom) ;
@@ -64,7 +64,7 @@ bool agent::supprimer(int id )
 {
     QString res_id = QString::number(id) ;
     QSqlQuery query ;
-        query.prepare("Delete from AGENT where ID='"+res_id+"'") ;
+        query.prepare("Delete from AGENT where ID_AGENT='"+res_id+"'") ;
        return   query.exec() ;
 }
 
@@ -74,7 +74,7 @@ bool agent::modifer(int id, QString nom, QString prenom,int CIN, QString email, 
     QString res_cin = QString::number(CIN) ;
     QString res_tel = QString::number(num_tel) ;
     QSqlQuery query ;
-    query.prepare("update AGENT set ID='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' where ID='"+res_id+"'") ;
+    query.prepare("update AGENT set ID_AGENT = '"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' where ID_AGENT = '"+res_id+"'") ;
     return query.exec() ;
 }
 
@@ -95,7 +95,7 @@ bool agent::charger_agents(QTableView *tableView)
 void agent::table_click_agent(QString val, QLineEdit *id, QLineEdit *nom, QLineEdit *prenom, QLineEdit *cin, QLineEdit *email, QLineEdit *mdp, QLineEdit *tel  )
 {
     QSqlQuery query ;
-    query.prepare("select * from AGENT where ID = '"+val+"'") ;
+    query.prepare("select * from AGENT where ID_AGENT = '"+val+"'") ;
     if (query.exec())
     {
         while (query.next())
@@ -120,7 +120,7 @@ void agent::rechercher_agent(QString val , QComboBox *comboBox , QTableView *tab
     if (comboBox->currentIndex()==1)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from AGENT where ID = '"+val+"'" ) ;
+        query->prepare("select * from AGENT where ID_AGENT = '"+val+"'" ) ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -172,7 +172,7 @@ void agent::trier_agents(QComboBox *comboBox , QTableView *tableView , QLabel *t
 
           QSqlQueryModel * modal = new QSqlQueryModel() ;
           QSqlQuery *query = new QSqlQuery();
-           query->prepare("select * from AGENT ORDER BY ID") ;
+           query->prepare("select * from AGENT ORDER BY ID_AGENT") ;
           query->exec() ;
           modal->setQuery(*query) ;
           tableView->setModel(modal) ;

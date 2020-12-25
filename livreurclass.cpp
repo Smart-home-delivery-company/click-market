@@ -20,7 +20,7 @@ bool livreurclass::ajouter()
     QString res_id = QString::number(get_id()) ;
     QString res_CIN = QString::number(get_cin()) ;
     QString res_numtel = QString::number(get_numtel()) ;
-    query.prepare("INSERT INTO ALIVREUR(ID,NOM,PRENOM,CIN,EMAIL,MDP,TEL)"
+    query.prepare("INSERT INTO LIVREUR(ID_LIVREUR,NOM,PRENOM,CIN,EMAIL,MDP,TEL)"
                   "VALUES(:id_agent, :nom, :prenom, :CIN, :email, :mdp, :num_tel)") ;
     query.bindValue(":id_agent", res_id) ;
     query.bindValue(":nom", nom) ;
@@ -37,7 +37,7 @@ bool livreurclass::supprimer(int id )
 {
     QString res_id = QString::number(id) ;
     QSqlQuery query ;
-    query.prepare("Delete from ALIVREUR where ID='"+res_id+"'") ;
+    query.prepare("Delete from LIVREUR where ID_LIVREUR='"+res_id+"'") ;
     return   query.exec() ;
 }
 
@@ -47,7 +47,7 @@ bool livreurclass::modifer(int id, QString nom, QString prenom,int CIN, QString 
     QString res_cin = QString::number(CIN) ;
     QString res_tel = QString::number(num_tel) ;
     QSqlQuery query ;
-    query.prepare("update ALIVREUR set ID='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' where ID='"+res_id+"' ") ;
+    query.prepare("update LIVREUR set ID_LIVREUR='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' where ID_LIVREUR='"+res_id+"' ") ;
     return query.exec() ;
 }
 
@@ -55,7 +55,7 @@ bool livreurclass::charger_livreur(QTableView *tableView)
 {
     QSqlQueryModel * modal = new QSqlQueryModel() ;
     QSqlQuery *query = new QSqlQuery();
-    query->prepare("select * from ALIVREUR") ;
+    query->prepare("select * from LIVREUR") ;
     query->exec() ;
     modal->setQuery(*query) ;
     tableView->setModel(modal) ;
@@ -66,7 +66,7 @@ bool livreurclass::charger_livreur(QTableView *tableView)
 void livreurclass::table_click_livreur(QString val, QLineEdit *id, QLineEdit *nom, QLineEdit *prenom, QLineEdit *cin, QLineEdit *email, QLineEdit *mdp, QLineEdit *tel  )
 {
     QSqlQuery query ;
-    query.prepare("select * from ALIVREUR where ID = '"+val+"'") ;
+    query.prepare("select * from LIVREUR where ID_LIVREUR = '"+val+"'") ;
     if (query.exec())
     {
         while (query.next())
@@ -91,42 +91,42 @@ void livreurclass::rechercher_livreur(QString val,QComboBox *comboBox,QTableView
     if (comboBox->currentIndex()==1)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where ID = '"+val+"'" ) ;
+        query->prepare("select * from LIVREUR where ID_LIVREUR = '"+val+"'" ) ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
     } else if (comboBox->currentIndex()==2)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where PRENOM='"+val+"'") ;
+        query->prepare("select * from LIVREUR where PRENOM='"+val+"'") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
     } else if (comboBox->currentIndex()==3)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where EMAIL='"+val+"'") ;
+        query->prepare("select * from LIVREUR where EMAIL='"+val+"'") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
     } else if (comboBox->currentIndex()==4)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where CIN='"+val+"'") ;
+        query->prepare("select * from LIVREUR where CIN='"+val+"'") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
     } else if (comboBox->currentIndex()==5)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where NOM='"+val+"'") ;
+        query->prepare("select * from LIVREUR where NOM='"+val+"'") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
     } else if (comboBox->currentIndex()==6)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from ALIVREUR where TEL='"+val+"'") ;
+        query->prepare("select * from LIVREUR where TEL='"+val+"'") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -142,7 +142,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
 
           QSqlQueryModel * modal = new QSqlQueryModel() ;
           QSqlQuery *query = new QSqlQuery();
-           query->prepare("select * from ALIVREUR ORDER BY ID") ;
+           query->prepare("select * from LIVREUR ORDER BY ID_LIVREUR") ;
           query->exec() ;
           modal->setQuery(*query) ;
           tableView->setModel(modal) ;
@@ -154,7 +154,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
 
         QSqlQueryModel * modal = new QSqlQueryModel() ;
         QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from ALIVREUR ORDER BY NOM") ;
+         query->prepare("select * from LIVREUR ORDER BY NOM") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -164,7 +164,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
     {
         QSqlQueryModel * modal = new QSqlQueryModel() ;
         QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from ALIVREUR ORDER BY EMAIL") ;
+         query->prepare("select * from LIVREUR ORDER BY EMAIL") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -173,7 +173,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
     {
         QSqlQueryModel * modal = new QSqlQueryModel() ;
         QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from ALIVREUR ORDER BY CIN") ;
+         query->prepare("select * from LIVREUR ORDER BY CIN") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -182,7 +182,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
     {
         QSqlQueryModel * modal = new QSqlQueryModel() ;
         QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from ALIVREUR ORDER BY PRENOM") ;
+         query->prepare("select * from LIVREUR ORDER BY PRENOM") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -191,7 +191,7 @@ void livreurclass::trier_livreurs(QComboBox *comboBox , QTableView *tableView , 
     {
         QSqlQueryModel * modal = new QSqlQueryModel() ;
         QSqlQuery *query = new QSqlQuery();
-         query->prepare("select * from ALIVREUR ORDER BY TEL") ;
+         query->prepare("select * from LIVREUR ORDER BY TEL") ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;

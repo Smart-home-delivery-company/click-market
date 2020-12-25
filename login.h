@@ -123,6 +123,8 @@ private slots:
 
     void on_boutton_ajouter_clicked();
 
+    void on_navbar_Sant_5_clicked();
+
 private:
     Ui::login *ui;
 

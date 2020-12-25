@@ -42,7 +42,7 @@ bool clientclass::ajouter()
     QString mdp = get_mdp() ;
 
 
-    query.prepare("INSERT INTO CLIENT(ID,NOM,PRENOM,CIN,EMAIL,MDP,TEL,POINTS)"
+    query.prepare("INSERT INTO CLIENT(ID_CLIENT,NOM,PRENOM,CIN,EMAIL,MDP,TEL,POINTS)"
                   "VALUES(:id_agent, :nom, :prenom, :CIN, :email, :mdp, :num_tel, :points)") ;
     query.bindValue(":id_agent", res_id) ;
     query.bindValue(":nom", nom) ;
@@ -62,7 +62,7 @@ bool clientclass::modifer(int id, QString nom, QString prenom,int CIN, QString e
     QString res_points = QString::number(points_fid) ;
     QString res_tel = QString::number(num_tel) ;
     QSqlQuery query ;
-    query.prepare("update CLIENT set ID='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' , POINTS='"+res_points+"' where ID='"+res_id+"' ") ;
+    query.prepare("update CLIENT set ID_CLIENT='"+res_id+"', NOM='"+nom+"', PRENOM='"+prenom+"', CIN='"+res_cin+"', EMAIL='"+email+"', MDP='"+mdp+"', TEL='"+res_tel+"' , POINTS='"+res_points+"' where ID_CLIENT='"+res_id+"' ") ;
     return query.exec() ;
 }
 
@@ -70,7 +70,7 @@ bool clientclass::supprimer(int id )
 {
     QString res_id = QString::number(id) ;
     QSqlQuery query ;
-        query.prepare("Delete from CLIENT where ID='"+res_id+"'") ;
+        query.prepare("Delete from CLIENT where ID_CLIENT='"+res_id+"'") ;
        return   query.exec() ;
 }
 
@@ -93,7 +93,7 @@ bool clientclass::charger_clients(QTableView *tableView)
 void clientclass::table_click_client(QString val, QLineEdit *id, QLineEdit *nom, QLineEdit *prenom, QLineEdit *cin, QLineEdit *email, QLineEdit *mdp, QLineEdit *tel, QLineEdit *points  )
 {
     QSqlQuery query ;
-    query.prepare("select * from CLIENT where ID = '"+val+"'") ;
+    query.prepare("select * from CLIENT where ID_CLIENT = '"+val+"'") ;
     if (query.exec())
     {
         while (query.next())
@@ -118,7 +118,7 @@ void clientclass::rechercher_client(QString val , QComboBox *comboBox , QTableVi
     if (comboBox->currentIndex()==1)
     {
         QSqlQuery *query = new QSqlQuery();
-        query->prepare("select * from CLIENT where ID = '"+val+"'" ) ;
+        query->prepare("select * from CLIENT where ID_CLIENT = '"+val+"'" ) ;
         query->exec() ;
         modal->setQuery(*query) ;
         tableView->setModel(modal) ;
@@ -170,7 +170,7 @@ void clientclass::trier_client(QComboBox *comboBox , QTableView *tableView , QLa
 
           QSqlQueryModel * modal = new QSqlQueryModel() ;
           QSqlQuery *query = new QSqlQuery();
-           query->prepare("select * from CLIENT ORDER BY ID") ;
+           query->prepare("select * from CLIENT ORDER BY ID_CLIENT") ;
           query->exec() ;
           modal->setQuery(*query) ;
           tableView->setModel(modal) ;
