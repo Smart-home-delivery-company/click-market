@@ -23,7 +23,7 @@
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
-
+#include "cartes.h"
 #include <QVBoxLayout>
 
 
@@ -617,4 +617,10 @@ void login::on_boutton_ajouter_clicked()
 void login::on_navbar_Sant_5_clicked()
 {
 
+}
+
+void login::on_finaliser_avecass_clicked()
+{
+    carte = new Cartes ;
+    carte->show() ;
 }

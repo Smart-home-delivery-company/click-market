@@ -1,9 +1,10 @@
 QT       += core gui printsupport charts \
             multimedia
-QT += sql
+QT += sql serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport
 
+TARGET = arduino_finale
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -24,6 +25,7 @@ SOURCES += \
     ajouterproduit.cpp \
     arduino.cpp \
     associerclient.cpp \
+    cartes.cpp \
     client.cpp \
     clientclass.cpp \
     connection.cpp \
@@ -43,6 +45,7 @@ HEADERS += \
     ajouterproduit.h \
     arduino.h \
     associerclient.h \
+    cartes.h \
     client.h \
     clientclass.h \
     connection.h \
@@ -58,6 +61,7 @@ FORMS += \
     admingui.ui \
     ajouterproduit.ui \
     associerclient.ui \
+    cartes.ui \
     client.ui \
     facture.ui \
     livreur.ui \

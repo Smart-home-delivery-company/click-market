@@ -10,6 +10,8 @@
 #include <QMap>
 #include <QList>
 #include "facture.h"
+#include "cartes.h"
+
 namespace Ui {
 class login;
 
@@ -125,8 +127,12 @@ private slots:
 
     void on_navbar_Sant_5_clicked();
 
+    void on_finaliser_avecass_clicked();
+
 private:
     Ui::login *ui;
+    Ui::Cartes *C ;
+    Cartes *carte ;
 
     bool client_associe  ;
     int converti ;
